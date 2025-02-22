@@ -1,0 +1,16 @@
+# Enable rewriting
+RewriteEngine On
+
+# If the request is not for a real file or directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite all requests to the root index.html
+RewriteRule ^ index.html [QSA,L]
+
+# Optional: Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Optional: Handle errors
+ErrorDocument 404 /index.html

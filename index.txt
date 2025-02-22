@@ -1,0 +1,7 @@
+<div className="p-4 flex flex-col flex-grow">
+        <h3 className="font-bold text-xl mb-2 text-gray-800">{title}</h3>
+        <p className="text-gray-700 text-sm mb-3">{duration}</p>
+        <p className="text-gray-600 text-base break-words whitespace-normal overflow-hidden">
+          {shortdescription}
+        </p>
+      </div>
