@@ -13,7 +13,7 @@ const Footer = () => {
     const fetchPackages = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/packages/header"
+          "https://insurance-backend-production-5d25.up.railway.app/api/packages/header"
         );
         setPackages(response.data);
       } catch (error) {

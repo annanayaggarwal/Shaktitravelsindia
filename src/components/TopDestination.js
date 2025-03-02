@@ -94,7 +94,7 @@ const TopDestinationsSection = () => {
     const fetchDestinations = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('http://localhost:5000/api/packages/header');
+        const response = await axios.get('https://insurance-backend-production-5d25.up.railway.app/api/packages/header');
         if (response.data.Renewal) {
           setDestinations(response.data.Renewal);
         } else {

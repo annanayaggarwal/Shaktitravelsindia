@@ -75,7 +75,7 @@ const PackageDetailPage = () => {
     const fetchPackageData = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(`http://localhost:5000/api/packages/${id}`);
+        const response = await axios.get(`https://insurance-backend-production-5d25.up.railway.app/api/packages/${id}`);
         setPackageData(response.data);
         setIsLoading(false);
       } catch (error) {

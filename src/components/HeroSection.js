@@ -139,7 +139,7 @@ const HeroSection = () => {
     const fetchInsuranceProducts = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:5000/api/packages/header");
+        const response = await axios.get("https://insurance-backend-production-5d25.up.railway.app/api/packages/header");
         
         // Map the API data to the format required for InsuranceCard
         const formattedProducts = response.data.Insurance?.map(pkg => ({

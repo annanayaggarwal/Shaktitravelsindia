@@ -67,7 +67,7 @@ const QueryForm = () => {
 
     setIsSubmitting(true);
     try {
-      await axios.post('http://localhost:5000/api/queries', formData);
+      await axios.post('https://insurance-backend-production-5d25.up.railway.app/api/queries', formData);
       setSubmitStatus('success');
       setFormData({ name: '', email: '', contact: '', InsuranceDetails: '' });
       setTimeout(() => setSubmitStatus(null), 5000); // Clear success message after 5 seconds

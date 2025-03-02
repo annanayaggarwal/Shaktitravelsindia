@@ -53,7 +53,7 @@ const AdminDashboard = () => {
   const fetchPackages = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/packages', {
+      const response = await axios.get('https://insurance-backend-production-5d25.up.railway.app/api/packages', {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       setPackages(response.data);
@@ -65,7 +65,7 @@ const AdminDashboard = () => {
 
   const fetchQueries = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/queries', {
+      const response = await axios.get('https://insurance-backend-production-5d25.up.railway.app/api/queries', {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       setQueries(response.data);
@@ -89,7 +89,7 @@ const AdminDashboard = () => {
 
   const handleAddPackage = async (newPackage) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/packages/header', newPackage, {
+      const response = await axios.post('https://insurance-backend-production-5d25.up.railway.app/api/packages/header', newPackage, {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       setPackages([...packages, response.data]);
@@ -100,7 +100,7 @@ const AdminDashboard = () => {
 
   const handleUpdatePackage = async (updatedPackage) => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/packages/${updatedPackage._id}`, updatedPackage, {
+      const response = await axios.put(`https://insurance-backend-production-5d25.up.railway.app/api/packages/${updatedPackage._id}`, updatedPackage, {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       setPackages(packages.map(pkg => pkg._id === updatedPackage._id ? response.data : pkg));
@@ -112,7 +112,7 @@ const AdminDashboard = () => {
 
   const handleDeletePackage = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/packages/${id}`, {
+      await axios.delete(`https://insurance-backend-production-5d25.up.railway.app/api/packages/${id}`, {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       setPackages(packages.filter(pkg => pkg._id !== id));
