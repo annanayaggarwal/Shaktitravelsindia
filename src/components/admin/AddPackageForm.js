@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Upload, Loader2, X } from 'lucide-react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const AddPackageForm = ({ onPackageAdded }) => {
   const [formData, setFormData] = useState({
@@ -10,7 +12,7 @@ const AddPackageForm = ({ onPackageAdded }) => {
     duration: '',
     price: '',
     image: '',
-    type: 'destination'
+    type: 'Insurance'
   });
 
   const [itineraryFile, setItineraryFile] = useState(null);
@@ -27,6 +29,14 @@ const AddPackageForm = ({ onPackageAdded }) => {
     }));
 
     // Clear previous error when user starts typing
+    setError('');
+  };
+
+  const handleDescriptionChange = (content) => {
+    setFormData(prev => ({
+      ...prev,
+      description: content
+    }));
     setError('');
   };
 
@@ -64,7 +74,8 @@ const AddPackageForm = ({ onPackageAdded }) => {
       description: '',
       duration: '',
       price: '',
-      image: ''
+      image: '',
+      type: 'Insurance'
     });
     setItineraryFile(null);
     setPreviewUrl('');
@@ -104,7 +115,7 @@ const AddPackageForm = ({ onPackageAdded }) => {
       }
 
       const response = await axios.post(
-        'https://tourandtravelsbacked-production.up.railway.app/api/packages',
+        'http://localhost:5000/api/packages',
         formDataToSend,
         {
           headers: {
@@ -130,6 +141,23 @@ const AddPackageForm = ({ onPackageAdded }) => {
     const fileInput = document.getElementById('itinerary');
     if (fileInput) fileInput.value = '';
   };
+
+  // Quill editor modules and formats configuration
+  const modules = {
+    toolbar: [
+      [{ 'header': [1, 2, 3, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      [{ 'indent': '-1' }, { 'indent': '+1' }],
+      ['clean']
+    ],
+  };
+
+  const formats = [
+    'header',
+    'bold', 'italic', 'underline', 'strike',
+    'list', 'bullet', 'indent',
+  ];
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
@@ -175,26 +203,25 @@ const AddPackageForm = ({ onPackageAdded }) => {
               id="duration"
               value={formData.duration}
               onChange={handleChange}
-              required
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
               placeholder="e.g., 3 days, 2 nights"
             />
           </div>
         </div>
         <div className="mb-4">
-  <label className="block text-sm font-medium text-gray-700">
-    Package Type
-  </label>
-  <select
-    name="type"
-    value={formData.type}
-    onChange={handleChange}
-    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-  >
-    <option value="destination">Destination</option>
-    <option value="chardham">Chardham</option>
-  </select>
-</div>
+          <label className="block text-sm font-medium text-gray-700">
+            Package Type
+          </label>
+          <select
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          >
+            <option value="Renewal">Renewal</option>
+            <option value="Insurance">Insurance</option>
+          </select>
+        </div>
         <div>
           <label htmlFor="shortdescription" className="block text-sm font-medium text-gray-700">
             Short Description*
@@ -212,19 +239,20 @@ const AddPackageForm = ({ onPackageAdded }) => {
         </div>
 
         <div>
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
             Detailed Description*
           </label>
-          <textarea
-            name="description"
-            id="description"
+          <ReactQuill
             value={formData.description}
-            onChange={handleChange}
-            required
-            rows={4}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-            placeholder="Detailed description of the package"
+            onChange={handleDescriptionChange}
+            modules={modules}
+            formats={formats}
+            className="bg-white"
+            style={{ minHeight: "200px", marginBottom: "50px" }}
           />
+          <p className="text-xs text-gray-500 mt-2">
+            Use the formatting toolbar to add bullet points, indentation, and other formatting.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

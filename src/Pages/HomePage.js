@@ -12,24 +12,27 @@ import Footer from '../components/Footer';
 
 const HomePage = () => {
   return (
+    <div>
     <div className="min-h-screen flex flex-col">
       <Header />
       <main>
         <HeroSection />
         <div className="max-w-7xl mx-auto px-1 sm:px-2 lg:px-0">
-          <QueryForm />
+          {/* <QueryForm /> */}
         </div>
         <div className="max-w-7xl mx-auto px-1 sm:px-2 lg:px-0">
-        <PackageInfo />
-        <TempleCards/>
+        {/* <PackageInfo /> */}
+        {/* <TempleCards/> */}
           <PackagesSection/>
-          <TopDestinationsSection/>
+          {/* <TopDestinationsSection/> */}
           <OpeningClosingDates/>
           <CharDhamInfoAndMap />
         </div>
-        <Footer/>
       </main>
     </div>
+
+      <Footer/>
+</div>
   );
 };
 

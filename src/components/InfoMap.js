@@ -1,60 +1,77 @@
 import React from "react";
+import pics1 from "../utils/19197288.jpg";
+import pics2 from "../utils/icons8-mobile-messaging-100.png";
+import pics3 from "../utils/3658470.jpg";
+import pics4 from "../utils/3895276.jpg";
+import pics5 from "../utils/rag-doll-transported-wheelbarrow-dollar-symbol-red.jpg";
 
-const CharDhamInfoAndMap = () => {
+const PBAdvantage = () => {
+  const advantages = [
+    {
+      title: "Best Prices",
+      description: "Guaranteed",
+      imageSrc: pics5
+    },
+    {
+      title: "Unbiased Advice",
+      description: "Keeping customers first",
+      imageSrc: pics4
+    },
+    {
+      title: "100% Reliable",
+      description: "Regulated by IRDAI",
+      imageSrc: pics2
+    },
+    {
+      title: "Claims Support",
+      description: "Made stress-free",
+      imageSrc: pics1
+    },
+    {
+      title: "Happy to Help",
+      description: "Every day of the week",
+      imageSrc: pics3
+    }
+  ];
+
   return (
-    <section className="py-8 bg-[#FFFDE7]">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row">
-          <div className="md:w-1/2 pr-4">
-            <h2 className="text-2xl font-bold mb-4">
-              Char Dham Tour Package 2025
-            </h2>
-            <p className="mb-4">
-              Char dham yatra start date 2025 - It is very good news for them
-              who are making a plan for Do Dham Yatra and 4 Dham Yatra in
-              Uttarakhand. The Char Dham Yatra will start from 10 May 2025. The
-              journey will be begun again from the month of may (Second Week).
-              Every year the dates are closed for halt the Kapats of the temples
-              and opening again, and the Kapats are opened and closed with
-              spellings and special puja worship according to Hindu Traditions.
-            </p>
-            <h3 className="text-xl font-bold mb-2">
-              TEMPLES TO VISIT IN CHAR DHAM YATRA
-            </h3>
-            <p>
-              In addition to Kedarnath and Badrinath, you can visit many temples
-              during your 4 Dham Tour, which include{" "}
-              <span className="text-red-500">
-                Tungnath Temple, Kalpeshwar Temple, Madhyamaheswar Temple
-              </span>
-              , Mata Murti Temple,{" "}
-              <span className="text-red-500">
-                Rudranath Temple, Triyuginarayan Temple, Yogdhyan Badri Temple,
-                Vridha Badri Temple
-              </span>
-              , etc. of this, 5 Prayags are also seen in the Chardham Yatra,
-              which include Rudraprayag,{" "}
-              <span className="text-red-500">Devprayag</span> Kedar Marg and{" "}
-              <span className="text-red-500">Karnaprayag, Nandprayag</span> and{" "}
-              <span className="text-red-500">Vishnuprayag</span>
-              Badrinath.
-            </p>
-          </div>
-          <div className="md:w-1/2 mt-6 md:mt-0">
-            <h2 className="text-2xl font-bold mb-4">
-              Char Dham Tour Map - Yamunotri, Gangotri, Badrinath, & Kedarnath
-              route
-            </h2>
-            <img
-              src="https://www.chardhampackage.com/images/map/chardham-map.jpg"
-              alt="Char Dham Tour Map"
-              className="w-full h-auto rounded-lg shadow-lg"
-            />
-          </div>
-        </div>
+    <div className="max-w-6xl mx-auto px-4 py-12">
+      <div className="mb-12">
+        <h1 className="text-2xl font-bold text-[#253858] mb-6 relative">
+          Insurance Rivers Advantage
+          <div className="absolute -bottom-2 left-0 w-12 h-1 bg-blue-500"></div>
+        </h1>
+        <p className="text-[#253858] text-base leading-relaxed mb-4 max-w-3xl">
+          When you buy insurance from us, you get more than just financial safety. You also 
+          get: our promise of simplifying complex insurance terms and conditions, quick 
+          stress-free claims, instant quotes from top insurers and being present for you in 
+          the toughest of times.
+        </p>
+        <button className="text-blue-500 hover:text-blue-600 transition-colors text-sm font-medium">
+          Know more
+        </button>
       </div>
-    </section>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        {advantages.map((advantage, index) => (
+          <div 
+            key={index} 
+            className="bg-white rounded-xl shadow-md border p-6 transition-all duration-300 transform hover:shadow-2xl hover:-translate-y-2 cursor-pointer"
+          >
+            <div className="flex flex-col items-center text-center space-y-4">
+              <img 
+                src={advantage.imageSrc} 
+                alt={advantage.title}
+                className="w-28 h-28 object-contain mb-4"
+              />
+              <h3 className="text-lg font-semibold text-[#253858]">{advantage.title}</h3>
+              <p className="text-sm text-gray-600">{advantage.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
-export default CharDhamInfoAndMap;
+export default PBAdvantage;

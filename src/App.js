@@ -67,7 +67,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/package/:id" element={<PackageDetailPage />} />
               <Route path="/admin" element={<AdminDashboard />} />
-              <Route path="/book-now" element={<BookNow />} />
+              <Route path="/enquire-now" element={<BookNow />} />
               <Route path="/about" element={<AboutUs />} />
               {/* Catch all route for 404 */}
               <Route path="*" element={<Navigate to="/" replace />} />

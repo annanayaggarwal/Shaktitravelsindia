@@ -1,44 +1,94 @@
 import React from 'react';
 
-const OpeningClosingDates = () => {
-  const templeData = [
-    { name: "Yamunotri Dham", opening: "30 April 2025", closing: "03 November 2025" },
-    { name: "Gangotri Dham", opening: "30 April 2025", closing: "02 November 2025" },
-    { name: "Kedarnath Dham", opening: "2 May 2025", closing: "03 November 2025" },
-    { name: "Badrinath Dham", opening: "2 May 2025", closing: "17 November 2025" },
-    { name: "Hemkund Sahib", opening: "25 May 2025", closing: "10 October 2025" },
+const FeatureCard = ({ icon, title, description, borderColor }) => (
+  <div className={`bg-white rounded-xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border-l-4 ${borderColor} hover:shadow-[0_4px_12px_rgba(0,0,0,0.15)] transition-shadow`}>
+    <div className="flex flex-col gap-2">
+      <div className="text-2xl">{icon}</div>
+      <h3 className={`text-lg font-medium ${
+        title === '51 insurers' ? 'text-cyan-500' :
+        title === 'Great Price' ? 'text-emerald-500' :
+        title === 'Claims' ? 'text-yellow-500' :
+        'text-blue-600'
+      }`}>{title}</h3>
+      <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
+    </div>
+  </div>
+);
+
+const WhyChooseUs = () => {
+  const features = [
+    {
+      icon: "🎊",
+      title: "Over 9 million",
+      description: "customers trust us & have bought their insurance on InsranceRivers",
+      borderColor: "border-blue-600"
+    },
+    {
+      icon: "🔍",
+      title: "51 insurers",
+      description: "partnered with us so that you can compare easily & transparently",
+      borderColor: "border-cyan-500"
+    },
+    {
+      icon: "👑",
+      title: "Great Price",
+      description: "for all kinds of insurance plans available online",
+      borderColor: "border-emerald-500"
+    },
+    {
+      icon: "👤",
+      title: "Claims",
+      description: "support built in with every policy for help, when you need it the most",
+      borderColor: "border-yellow-500"
+    }
   ];
 
   return (
-    <section className="py-6">
-      <h2 className="text-2xl font-bold text-center mb-4 bg-red-500 text-white py-2">
-        Chardham Yatra Package opening and Closing Dates 2025
-      </h2>
-      <p className="text-center mb-6">
-        'Chardham Yatra 2025' will start on 10 May. Gangotri along with Yamunotri Temple Doors always open on the occasion of Akshaya Tritiya. Upcoming Akshay Tritiya is on 10 May 2025. Kedarnath's door date will be decided on Maha Shivratri (8 March). Char Dham yatra is a very important Hindu religious journey of four holy temples in Uttarakhand. Lakhs of devotees visit there from all corners of India as well world.
-      </p>
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="py-2 px-4 border">Chardham Temples</th>
-              <th className="py-2 px-4 border">Opening Date</th>
-              <th className="py-2 px-4 border">Closing Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {templeData.map((temple, index) => (
-              <tr key={index}>
-                <td className="py-2 px-4 border">{temple.name}</td>
-                <td className="py-2 px-4 border">{temple.opening}</td>
-                <td className="py-2 px-4 border">{temple.closing}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <div className="relative max-w-7xl mx-auto px-4 py-16">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-10 left-10 w-4 h-4 rounded-full bg-pink-100"></div>
+        <div className="absolute top-20 right-20 w-3 h-3 rounded-full bg-blue-100"></div>
+        <div className="absolute bottom-40 left-1/4 w-6 h-6 text-pink-100">×</div>
+        <div className="absolute top-1/3 right-1/3 w-8 h-8 text-cyan-100">○</div>
+        <div className="absolute -bottom-5 right-10 w-4 h-4 rounded-full bg-green-100"></div>
       </div>
-    </section>
+
+      {/* Main Content */}
+      <div className="relative z-10 flex flex-col lg:flex-row gap-12">
+        {/* Text Section */}
+        <div className="lg:w-1/3">
+          <h2 className="text-[40px] leading-tight font-medium">
+            <span className="text-gray-800">What makes</span>
+            <br />
+            <span className="text-[#2b3d76]">InsranceRivers</span>
+            <span className="text-gray-800"> one of </span>
+            
+            <span className="text-[#2b3d76]">India's favourite places </span>
+            
+            <span className="text-gray-800">to </span>
+            <span className="text-[#2b3d76]">buy insurance</span>
+            <span className="text-gray-800">?</span>
+          </h2>
+        </div>
+
+        {/* Cards Section */}
+        <div className="lg:w-2/3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {features.map((feature, index) => (
+              <FeatureCard
+                key={index}
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+                borderColor={feature.borderColor}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default OpeningClosingDates;
+export default WhyChooseUs;

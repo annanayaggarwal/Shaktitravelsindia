@@ -32,7 +32,7 @@ const DestinationCard = ({ _id, name, image }) => {
   );
 };
 
-const MobileSlider = ({ destinations }) => {
+const MobileSlider = ({ Renewal }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -48,7 +48,7 @@ const MobileSlider = ({ destinations }) => {
   return (
     <div className="relative px-4">
       <Slider {...settings}>
-        {destinations.map((dest) => (
+        {Renewal.map((dest) => (
           <div key={dest._id} className="px-2">
             <DestinationCard
               _id={dest._id}
@@ -62,9 +62,9 @@ const MobileSlider = ({ destinations }) => {
   );
 };
 
-const DesktopGrid = ({ destinations }) => (
+const DesktopGrid = ({ Renewal }) => (
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-    {destinations.map((dest) => (
+    {Renewal.map((dest) => (
       <DestinationCard
         key={dest._id}
         _id={dest._id}
@@ -94,16 +94,16 @@ const TopDestinationsSection = () => {
     const fetchDestinations = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('https://tourandtravelsbacked-production.up.railway.app/api/packages/header');
-        if (response.data.destinations) {
-          setDestinations(response.data.destinations);
+        const response = await axios.get('http://localhost:5000/api/packages/header');
+        if (response.data.Renewal) {
+          setDestinations(response.data.Renewal);
         } else {
           setDestinations([]);
         }
         setIsLoading(false);
       } catch (error) {
-        console.error('Error fetching destinations:', error);
-        setError('Failed to fetch destinations');
+        console.error('Error fetching Renewal:', error);
+        setError('Failed to fetch Renewal');
         setDestinations([]);
         setIsLoading(false);
       }
@@ -115,7 +115,7 @@ const TopDestinationsSection = () => {
   if (isLoading) return (
     <div className="py-8 bg-[#FFF6E9]">
       <div className="container mx-auto px-4">
-        <div className="text-center">Loading destinations...</div>
+        <div className="text-center">Loading Renewal Packages...</div>
       </div>
     </div>
   );
@@ -132,7 +132,7 @@ const TopDestinationsSection = () => {
     <section className="py-8 bg-[#FFF6E9]">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-6">
-          Chardham Package top Destinations
+          Renwal Packages
         </h2>
         <p className="text-center mb-8">
           There are many popular destinations in Uttarakhand during the Char Dham Yatra, you can visit and explore their beauty. Normally 4 Dham yatra begin from Haridwar. Haridwar,{' '}
@@ -141,10 +141,10 @@ const TopDestinationsSection = () => {
         
         {/* Show slider on mobile, grid on desktop */}
         <div className="block sm:hidden">
-          <MobileSlider destinations={destinations} />
+          <MobileSlider Renewal={destinations} />
         </div>
         <div className="hidden sm:block">
-          <DesktopGrid destinations={destinations} />
+          <DesktopGrid Renewal={destinations} />
         </div>
       </div>
     </section>

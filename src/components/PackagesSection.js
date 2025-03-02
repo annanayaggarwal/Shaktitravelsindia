@@ -116,13 +116,13 @@ const PackagesSection = () => {
     const fetchPackages = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('https://tourandtravelsbacked-production.up.railway.app/api/packages/header', {
+        const response = await axios.get('http://localhost:5000/api/packages/header', {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           }
         });
-        setPackages(response.data.chardham || []);
+        setPackages(response.data.Renewal || []);
         setIsLoading(false);
       } catch (error) {
         console.error('Error fetching packages:', error);
@@ -169,16 +169,17 @@ const PackagesSection = () => {
   };
 
   if (isLoading) return <div className="text-center p-4">Loading packages...</div>;
-  if (error) return <div className="text-center text-red-500 p-4">{error}</div>;
+  if (error) return <div className="text-center text-blue-500 p-4">{error}</div>;
 
   return (
+    <div className="p-3 bg-[#ECF5FE] m-2 rounded-[20px]">
     <section className="py-6 overflow-hidden">
-      <h2 className="text-2xl font-bold text-center mb-4 bg-red-500 text-white py-2">
-        Amazing Char Dham yatra packages at the best price
+      <h2 className="text-2xl font-bold text-center mb-4 bg-blue-500 text-white py-2">
+        Amazing Renewal packages at the best price
       </h2>
       <p className="text-center mb-6">
-        Get an amazing deal on booking Char Dham packages @shaktitravelindia.com by the best travel agent of Haridwar.
-        There are {packages.length} Chardham Packages given below as per the latest demand and pilgrims.
+        Get an amazing deal on renewal of Insurance packages @insurancerivers.in by the best insurance agency of Delhi.
+        There are {packages.length} renewal Packages given below as per the latest demand and discounts available.
       </p>
       {packages.length > 0 ? (
         <div className="custom-slider px-8">
@@ -192,6 +193,7 @@ const PackagesSection = () => {
         <p className="text-center">No packages available at the moment.</p>
       )}
     </section>
+    </div>
   );
 };
 

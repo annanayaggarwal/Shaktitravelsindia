@@ -6,7 +6,7 @@ const QueryForm = () => {
     name: '',
     email: '',
     contact: '',
-    tourDetails: ''
+    InsuranceDetails: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -34,8 +34,8 @@ const QueryForm = () => {
     }
 
     // Tour details validation
-    if (formData.tourDetails.trim().length < 10) {
-      newErrors.tourDetails = 'Please provide more details about your tour';
+    if (formData.InsuranceDetails.trim().length < 10) {
+      newErrors.InsuranceDetails = 'Please provide more details about your tour';
     }
 
     setErrors(newErrors);
@@ -67,9 +67,9 @@ const QueryForm = () => {
 
     setIsSubmitting(true);
     try {
-      await axios.post('https://tourandtravelsbacked-production.up.railway.app/api/queries', formData);
+      await axios.post('http://localhost:5000/api/queries', formData);
       setSubmitStatus('success');
-      setFormData({ name: '', email: '', contact: '', tourDetails: '' });
+      setFormData({ name: '', email: '', contact: '', InsuranceDetails: '' });
       setTimeout(() => setSubmitStatus(null), 5000); // Clear success message after 5 seconds
     } catch (error) {
       console.error('Error submitting query:', error);
@@ -80,7 +80,7 @@ const QueryForm = () => {
   };
 
   return (
-    <section className="bg-gradient-to-b from-yellow-50 to-yellow-100 p-6 rounded-t-3xl shadow-lg">
+    <section className="bg-gradient-to-b from-blue-50 to-blue-100 p-6 rounded-t-3xl shadow-lg">
       <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
         Send Your Query!
       </h3>
@@ -150,16 +150,16 @@ const QueryForm = () => {
           <div>
             <input
               type="text"
-              name="tourDetails"
-              value={formData.tourDetails}
+              name="InsuranceDetails"
+              value={formData.InsuranceDetails}
               onChange={handleChange}
-              placeholder="Tour Details"
+              placeholder="Insurance Details"
               className={`w-full p-3 rounded-lg border ${
-                errors.tourDetails ? 'border-red-500' : 'border-gray-300'
+                errors.InsuranceDetails ? 'border-red-500' : 'border-gray-300'
               } focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-colors`}
             />
-            {errors.tourDetails && (
-              <p className="mt-1 text-sm text-red-500">{errors.tourDetails}</p>
+            {errors.InsuranceDetails && (
+              <p className="mt-1 text-sm text-red-500">{errors.InsuranceDetails}</p>
             )}
           </div>
         </div>
@@ -169,13 +169,13 @@ const QueryForm = () => {
             type="submit"
             disabled={isSubmitting}
             className={`
-              bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-lg
+              bg-blue-600 hover:bg-red-600 text-white px-8 py-3 rounded-lg
               font-semibold transform transition-all duration-200
               ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'}
               focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2
             `}
           >
-            {isSubmitting ? 'Submitting...' : 'Book Now'}
+            {isSubmitting ? 'Submitting...' : 'Enquire Now'}
           </button>
         </div>
       </form>

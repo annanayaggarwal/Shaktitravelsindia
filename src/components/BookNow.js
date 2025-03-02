@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Loader2 } from 'lucide-react';
 
-const API_BASE_URL = 'https://tourandtravelsbacked-production.up.railway.app/api';
+const API_BASE_URL = 'http://localhost:5000/api';
 
 const BookNow = () => {
-  const [packages, setPackages] = useState({ chardham: [], destinations: [] });
+  const [packages, setPackages] = useState({ Insurance: [], Renewal: [] });
   const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
@@ -26,7 +26,7 @@ const BookNow = () => {
     if (!data.phone?.trim()) errors.push('Phone is required');
     if (!data.numberOfPeople || data.numberOfPeople < 1) errors.push('Number of people must be at least 1');
     if (!data.selectedPackage) errors.push('Package selection is required');
-    if (!data.travelDate) errors.push('Travel date is required');
+    // if (!data.travelDate) errors.push('Travel date is required');
     return errors;
   };
 
@@ -78,7 +78,7 @@ const BookNow = () => {
         numberOfPeople: parseInt(formData.numberOfPeople)
       };
 
-      await axios.post(`https://tourandtravelsbacked-production.up.railway.app/api/bookings`, bookingData);
+      await axios.post(`http://localhost:5000/api/bookings`, bookingData);
       
       setSubmitStatus({
         type: 'success',
@@ -109,7 +109,7 @@ const BookNow = () => {
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="container mx-auto px-4">
         <h1 className="text-4xl font-bold text-center text-gray-900 mb-8">
-          Book Your Spiritual Journey
+          Book Your Insurance Policy
         </h1>
 
         {/* Booking Form Section */}
@@ -205,13 +205,13 @@ const BookNow = () => {
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-transparent"
               >
                 <option value="">Choose a package</option>
-                <optgroup label="Chardham Packages">
-                  {packages.chardham.map(pkg => (
+                <optgroup label="Insurance Packages">
+                  {packages.Insurance.map(pkg => (
                     <option key={pkg._id} value={pkg._id}>{pkg.title}</option>
                   ))}
                 </optgroup>
-                <optgroup label="Destination Packages">
-                  {packages.destinations.map(pkg => (
+                <optgroup label="Renewal Packages">
+                  {packages.Renewal.map(pkg => (
                     <option key={pkg._id} value={pkg._id}>{pkg.title}</option>
                   ))}
                 </optgroup>
@@ -219,7 +219,7 @@ const BookNow = () => {
               </select>
             </div>
 
-            <div>
+            {/* <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Preferred Travel Date *
               </label>
@@ -232,7 +232,7 @@ const BookNow = () => {
                 disabled={isSubmitting}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-transparent"
               />
-            </div>
+            </div> */}
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -275,7 +275,7 @@ const BookNow = () => {
           </div>
           ) : (
             <>
-              {packages.chardham.map(pkg => (
+              {packages.Insurance.map(pkg => (
                 <div key={pkg._id} className="bg-white rounded-lg shadow-lg overflow-hidden">
                   <img 
                     src={pkg.image || "/api/placeholder/400/300"} 
@@ -303,7 +303,7 @@ const BookNow = () => {
                 </div>
               ))}
               
-              {packages.destinations.map(pkg => (
+              {packages.Renewal.map(pkg => (
                 <div key={pkg._id} className="bg-white rounded-lg shadow-lg overflow-hidden">
                   <img 
                     src={pkg.image || "/api/placeholder/400/300"} 
