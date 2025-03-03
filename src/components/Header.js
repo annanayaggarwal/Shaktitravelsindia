@@ -88,6 +88,36 @@ const Header = () => {
                     to={`/package/${pkg._id}`}
                     className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 border-b border-gray-100"
                   >
+                    <span className="mr-3">
+                      {/* Icon based on package type */}
+                      {pkg.title.toLowerCase().includes('term') && (
+                        <span className="text-blue-500">☂️</span>
+                      )}
+                      {pkg.title.toLowerCase().includes('health') && (
+                        <span className="text-red-500">❤️</span>
+                      )}
+                      {pkg.title.toLowerCase().includes('motor') && (
+                        <span className="text-blue-500">🚗</span>
+                      )}
+                      {pkg.title.toLowerCase().includes('wheeler') && (
+                        <span className="text-purple-500">🛵</span>
+                      )}
+                      {pkg.title.toLowerCase().includes('investment') && (
+                        <span className="text-yellow-500">💰</span>
+                      )}
+                      {pkg.title.toLowerCase().includes('home') && (
+                        <span className="text-teal-500">🏠</span>
+                      )}
+                      {pkg.title.toLowerCase().includes('family') && (
+                        <span className="text-teal-500">👨‍👩‍👧‍👦</span>
+                      )}
+                      {pkg.title.toLowerCase().includes('travel') && (
+                        <span className="text-teal-500">✈️</span>
+                      )}
+                      {pkg.title.toLowerCase().includes('child') && (
+                        <span className="text-teal-500">👨‍👧</span>
+                      )}
+                    </span>
                     {pkg.title}
                   </Link>
                 ))}
@@ -205,10 +235,40 @@ const Header = () => {
                 {activeDropdown === "Insurance" && (
                   <ul className="bg-gray-50 py-2">
                     {packages.Insurance?.map((pkg) => (
-                      <li key={pkg._id}>
+                      <li key={pkg._id} className="flex items-center">
+                        <span className="px-2">
+                          {/* Icon based on package type */}
+                          {pkg.title.toLowerCase().includes('term') && (
+                            <span className="text-blue-500">☂️</span>
+                          )}
+                          {pkg.title.toLowerCase().includes('health') && (
+                            <span className="text-red-500">❤️</span>
+                          )}
+                          {pkg.title.toLowerCase().includes('motor') && (
+                            <span className="text-blue-500">🚗</span>
+                          )}
+                          {pkg.title.toLowerCase().includes('wheeler') && (
+                            <span className="text-purple-500">🛵</span>
+                          )}
+                          {pkg.title.toLowerCase().includes('investment') && (
+                            <span className="text-yellow-500">💰</span>
+                          )}
+                          {pkg.title.toLowerCase().includes('home') && (
+                            <span className="text-teal-500">🏠</span>
+                          )}
+                          {pkg.title.toLowerCase().includes('family') && (
+                            <span className="text-teal-500">👨‍👩‍👧‍👦</span>
+                          )}
+                          {pkg.title.toLowerCase().includes('travel') && (
+                            <span className="text-teal-500">✈️</span>
+                          )}
+                          {pkg.title.toLowerCase().includes('child') && (
+                            <span className="text-teal-500">👨‍👧</span>
+                          )}
+                        </span>
                         <Link
                           to={`/package/${pkg._id}`}
-                          className="block px-8 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          className="block px-2 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         >
                           {pkg.title}
                         </Link>
@@ -251,16 +311,13 @@ const Header = () => {
                           {pkg.title.toLowerCase().includes('home') && (
                             <span className="text-teal-500">🏠</span>
                           )}
-                          {pkg.title.toLowerCase().includes('investment ') && (
-                            <span className="text-teal-500">💰</span>
-                          )}
-                          {pkg.title.toLowerCase().includes('family ') && (
+                          {pkg.title.toLowerCase().includes('family') && (
                             <span className="text-teal-500">👨‍👩‍👧‍👦</span>
                           )}
-                          {pkg.title.toLowerCase().includes('travel ') && (
+                          {pkg.title.toLowerCase().includes('travel') && (
                             <span className="text-teal-500">✈️</span>
                           )}
-                          {pkg.title.toLowerCase().includes('child ') && (
+                          {pkg.title.toLowerCase().includes('child') && (
                             <span className="text-teal-500">👨‍👧</span>
                           )}
                         </span>
@@ -312,5 +369,6 @@ const Header = () => {
     </header>
   );
 };
+
 
 export default Header;
