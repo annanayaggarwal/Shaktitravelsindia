@@ -177,7 +177,7 @@ const Header = () => {
             </li>
             <li>
               <Link
-                to="/claim"
+                to="/enquire-now"
                 className="text-gray-700 hover:text-blue-600 font-bold py-2"
               >
                 Claim
@@ -204,8 +204,8 @@ const Header = () => {
 
         {/* Contact Info - Desktop */}
         <div className="hidden lg:block bg-blue-600 text-white text-sm px-4 py-2 rounded-lg">
-          <p>Email: insuranceriver.sales@gmail.com</p>
-          <p>Call: +91-8373990449</p>
+          <p>Email: helpdesk@insurancerivers.in</p>
+          <p>Call: +91-8373990449,+91-9205116444,+91-9220812384</p>
         </div>
 
         {/* Mobile Menu Button */}

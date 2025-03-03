@@ -114,17 +114,29 @@ const Footer = () => {
             </p>
             <p className="mb-2">Phone</p>
             <a 
-              href="tel:+919837053925" 
+              href="tel:+918373990449" 
               className="text-blue-800 hover:text-blue-600 mb-2 block transition-colors"
             >
-              +91-8373990449
+              +91-8373990449,
+            </a>
+            <a 
+              href="tel:+919205116444" 
+              className="text-blue-800 hover:text-blue-600 mb-2 block transition-colors"
+            >
+              +91-9205116444,
+            </a>
+            <a 
+              href="tel:+919220812384" 
+              className="text-blue-800 hover:text-blue-600 mb-2 block transition-colors"
+            >
+              +91-9220812384
             </a>
             <p className="mb-2">Email</p>
             <a 
-              href="mailto:insuranceriver.sales@gmail.com"
+              href=" helpdesk@insurancerivers.in"
               className="text-blue-800 hover:text-blue-600 mb-2 block transition-colors"
             >
-              insuranceriver.sales@gmail.com
+               helpdesk@insurancerivers.in
             </a>
             <p className="mb-2">Follow us</p>
             <div className="flex space-x-4">
