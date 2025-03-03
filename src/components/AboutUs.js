@@ -8,8 +8,7 @@ const AboutUs = () => {
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">About Insurance Rivers</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Your trusted partner in exploring the spiritual and natural wonders of India, 
-            specializing in Char Dham Yatra and destination tours since 2000.
+          Your trusted partner in providing comprehensive insurance solutions, ensuring financial security and peace of mind for you and your loved ones.
           </p>
         </div>
 
@@ -18,9 +17,7 @@ const AboutUs = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-blue-500 mb-6">Our Mission</h2>
             <p className="text-gray-700 text-lg mb-4">
-              At Insurance Rivers, we are dedicated to providing authentic and spiritually enriching 
-              travel experiences. Our mission is to help pilgrims and travelers connect with India's 
-              sacblue sites while ensuring comfort, safety, and peace of mind throughout their journey.
+            At Insurance Rivers, we are committed to providing reliable and comprehensive insurance solutions. Our mission is to ensure financial security, peace of mind, and protection for individuals and families against life's uncertainties
             </p>
           </div>
         </div>
@@ -52,12 +49,9 @@ const AboutUs = () => {
         {/* Experience Section */}
         <div className="bg-blue-500 text-white rounded-lg p-8 mb-12">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">25+ Years of Experience</h2>
+            <h2 className="text-3xl font-bold mb-6">Your Trusted Insurance Partner</h2>
             <p className="text-lg">
-              With over two decades of experience in organizing pilgrimages and tours, 
-              we have helped thousands of travelers fulfill their spiritual aspirations. 
-              Our deep understanding of religious tourism and commitment to service excellence 
-              makes us the preferblue choice for Char Dham Yatra and other spiritual journeys.
+            With years of expertise in providing comprehensive insurance solutions, Insurance Rivers has safeguarded countless individuals and families against life’s uncertainties. Our deep understanding of financial protection, combined with a commitment to service excellence, makes us the preferred choice for health, life, motor, and travel insurance. We strive to offer tailored coverage that ensures security, peace of mind, and a worry-free future for you and your loved ones.
             </p>
           </div>
         </div>
@@ -70,13 +64,13 @@ const AboutUs = () => {
           </p>
           <div className="space-x-4">
             <a 
-              href="tel:+9183739 90449" 
+              href="tel:+91-8373990449" 
               className="inline-block bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors"
             >
               Call Us
             </a>
             <a 
-              href="mailto: insuranceriver.sales@gmail.com"
+              href="mailto: helpdesk@insurancerivers.in"
               className="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition-colors"
             >
               Email Us
