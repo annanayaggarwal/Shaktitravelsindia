@@ -205,7 +205,7 @@ const Header = () => {
         {/* Contact Info - Desktop */}
         <div className="hidden lg:block bg-blue-600 text-white text-sm px-4 py-2 rounded-lg">
           <p>Email: helpdesk@insurancerivers.in</p>
-          <p>Call: +91-8373990449,+91-9205116444,+91-9220812384</p>
+          <p>Call: +91-9205116444,+91-9220812584,+91-9220812384</p>
         </div>
 
         {/* Mobile Menu Button */}
