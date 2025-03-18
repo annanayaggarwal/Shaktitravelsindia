@@ -110,7 +110,7 @@ const Footer = () => {
               Contact Information
             </h3>
             <p className="mb-2">
-              Insurance Rivers, Padma Tower 2, Rajendra Nagar, Delhi (201001), India
+              Insurance Rivers,M19-20, upper ground Floor, Balrama House New Delhi-110015
             </p>
             <p className="mb-2">Phone</p>
             <a 
@@ -138,7 +138,7 @@ const Footer = () => {
             >
                helpdesk@insurancerivers.in
             </a>
-            <p className="mb-2">Follow us</p>
+            {/* <p className="mb-2">Follow us</p>
             <div className="flex space-x-4">
               <a 
                 href="#" 
@@ -156,7 +156,7 @@ const Footer = () => {
               >
                 <FaInstagram />
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="mt-8 text-center text-blue-800">

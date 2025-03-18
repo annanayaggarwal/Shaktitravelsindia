@@ -175,14 +175,14 @@ const Header = () => {
                 ))}
               </div>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="/enquire-now"
                 className="text-gray-700 hover:text-blue-600 font-bold py-2"
               >
                 Claim
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 to="/about"

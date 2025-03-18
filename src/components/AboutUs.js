@@ -64,7 +64,7 @@ const AboutUs = () => {
           </p>
           <div className="space-x-4">
             <a 
-              href="tel:+91-8373990449" 
+              href="tel:+91-9205116444" 
               className="inline-block bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors"
             >
               Call Us

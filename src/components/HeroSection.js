@@ -32,20 +32,6 @@ const InsuranceCard = ({ title, icon, discount, subtitle, id }) => (
   </Link>
 );
 
-const AlsoBuyCard = ({ title, category }) => (
-  <div 
-    className="bg-white rounded-lg p-3 shadow-md transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:rotate-1 cursor-pointer" 
-    style={{ 
-      perspective: '1000px', 
-      transform: 'rotateX(1deg)',
-      transformStyle: 'preserve-3d' 
-    }}
-  >
-    <div className="text-xs text-blue-600 mb-1">{category}</div>
-    <div className="text-sm text-gray-700">{title}</div>
-  </div>
-);
-
 const PromoBanner = ({ title, amount, rate, buttonText }) => (
   <div 
     className="bg-blue-900 text-white rounded-lg p-6 relative overflow-hidden transition-all duration-300 hover:shadow-2xl" 
@@ -61,15 +47,101 @@ const PromoBanner = ({ title, amount, rate, buttonText }) => (
       </div>
       <h3 className="text-2xl mb-2">₹{amount} {title}</h3>
       <p className="text-sm mb-4">starting @ ₹{rate}/month</p>
-      {/* <button className="bg-white text-blue-900 px-4 py-2 rounded-lg text-sm hover:bg-blue-50 transition-colors">
-        {buttonText}
-      </button> */}
     </div>
-    {/* Add decorative circles like in the PBAdvantage design */}
     <div className="absolute -right-16 -top-16 w-40 h-40 rounded-full bg-blue-800 opacity-30"></div>
     <div className="absolute -right-10 -bottom-20 w-32 h-32 rounded-full bg-blue-800 opacity-40"></div>
   </div>
 );
+
+// New Promo Slider Component to replace ALSO BUY section
+const PromoSlider = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
+  
+  // Slider items data
+  const sliderItems = [
+    {
+      id: 1,
+      title: "Asset Management",
+      subtitle: "Add your car/bike to get",
+      highlightText: "exclusive offers, renewal updates & plans",
+      buttonText: "Add vehicle",
+      color: "bg-cyan-500",
+      // image: "/api/placeholder/160/100"
+    },
+    {
+      id: 2,
+      title: "Investment Plans",
+      subtitle: "Invest ₹10K and Get",
+      highlightText: "₹1 Crore return*",
+      buttonText: "Invest now",
+      color: "bg-green-400",
+      // image: "/api/placeholder/120/100"
+    },
+    {
+      id: 3,
+      title: "Health Insurance",
+      subtitle: "Book Free Health Insurance",
+      highlightText: "Consultation at home",
+      buttonText: "Book home visit",
+      color: "bg-blue-500",
+      // image: "/api/placeholder/150/100"
+    }
+  ];
+
+  // Handle slide click
+  const handleSlideClick = (index) => {
+    setActiveSlide(index);
+  };
+
+  return (
+    <div className="relative w-full my-8">
+      <h2 className="text-blue-600 font-medium mb-4 relative">
+        PROMOTIONS
+        <div className="absolute -bottom-1 left-0 w-8 h-1 bg-blue-500"></div>
+      </h2>
+      
+      {/* Slider container - Now displaying all slides at once */}
+      <div className="rounded-lg">
+        <div className="grid grid-cols-3 gap-4">
+          {sliderItems.map((item, index) => (
+            <div 
+              key={item.id}
+              className={`${item.color} text-white rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ${activeSlide === index ? ' transform scale-105' : 'opacity-90 hover:opacity-100'}`}
+              onClick={() => handleSlideClick(index)}
+            >
+              <div className="flex flex-col h-full p-4">
+                <div className="flex-1">
+                  <p className="text-sm mb-1">{item.title}</p>
+                  <div className="space-y-1">
+                    <p className="text-lg font-medium">{item.subtitle}</p>
+                    <h3 className="text-xl font-bold">{item.highlightText}</h3>
+                  </div>
+                  <button className="mt-4 bg-white text-gray-800 px-3 py-1 text-sm rounded-md hover:bg-gray-100 transition-colors duration-300">
+                    {item.buttonText}
+                  </button>
+                </div>
+                
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Dots indicator - optional, can be removed since all slides are visible */}
+      <div className="flex justify-center space-x-2 mt-4">
+        {sliderItems.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => handleSlideClick(index)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              activeSlide === index ? 'bg-blue-600 w-4' : 'bg-gray-300'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const getIconForInsurance = (title) => {
   const lowerTitle = title.toLowerCase();
@@ -106,34 +178,27 @@ const HeroSection = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
-  // These items are not fetched from API as requested
-  const alsoBuyProducts = [
-    { category: 'Life Insurance', title: 'LIC Plans' },
-    { category: 'Term Life', title: 'Return of Premium' },
-    { category: 'Life Insurance', title: 'Life Insurance for Housewives' },
-    { category: 'Health Insurance', title: 'Day 1 Coverage' },
-    { category: 'Health Insurance', title: '1 Cr Health Insurance' },
-    { category: 'Accident Insurance', title: 'Personal Accident' },
-    { category: 'Motor Insurance', title: 'Commercial Vehicles' },
-    { category: 'Business Insurance', title: 'Marine Insurance' },
-    { category: 'Business Insurance', title: 'Professional Indemnity for Doctors' },
-    { category: 'Business Insurance', title: 'Directors & Officers Liability' },
-    { category: 'Business Insurance', title: 'Workmen Compensation' },
-    { category: 'Others', title: 'Pet Insurance' }
-  ];
-
-  const promos = [
+  const images = [
     {
-      title: 'Term Life Insurance',
-      amount: '1 Crore',
-      rate: '485',
+      imageUrl: "https://cms-img.coverfox.com/why-is-it-critical-to-have-a-motor-vehicle-insurance-policy.webp",
+      alt: "Motor insurance importance",
+      // link: "https://www.example.com/motor-insurance"
     },
     {
-      title: 'Investment Plan',
-      amount: '1 Crore',
-      rate: '10,000',
+      imageUrl: "https://cms-img.coverfox.com/car-suspension.webp",
+      alt: "Health insurance benefits",
+      // link: "https://www.example.com/health-insurance"
     }
   ];
+
+  // Auto slide functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide(prev => (prev === images.length - 1 ? 0 : prev + 1));
+    }, 3000);
+    
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   useEffect(() => {
     const fetchInsuranceProducts = async () => {
@@ -204,23 +269,32 @@ const HeroSection = () => {
           </div>
         </div>
         
-        <div className="relative">
-          {promos.map((promo, index) => (
-            <div
-              key={index}
-              className={`transition-opacity duration-500 ${
-                currentSlide === index ? 'opacity-100' : 'opacity-0 absolute inset-0'
-              }`}
-            >
-              <PromoBanner {...promo} />
-            </div>
-          ))}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-            {promos.map((_, index) => (
+        <div className="relative flex justify-center items-center">
+          <div className="w-700 h-200 relative">
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className={`transition-opacity duration-500 ${
+                  currentSlide === index ? 'opacity-100' : 'opacity-0 absolute inset-0'
+                }`}
+              >
+                <a>
+                  <img 
+                    src={image.imageUrl} 
+                    alt={image.alt} 
+                    className="w-full h-auto rounded-lg shadow-md"
+                    style={{ maxWidth: "500px", maxHeight: "400px" }}
+                  />
+                </a>
+              </div>
+            ))}
+          </div>
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
+            {images.map((_, index) => (
               <button
                 key={index}
                 className={`w-2 h-2 rounded-full transition-colors ${
-                  currentSlide === index ? 'bg-white' : 'bg-white/50'
+                  currentSlide === index ? 'bg-blue-600' : 'bg-gray-300'
                 }`}
                 onClick={() => setCurrentSlide(index)}
               />
@@ -260,23 +334,11 @@ const HeroSection = () => {
         <QueryForm />
       </div>
 
-      <div className="mb-8">
-        <h2 className="text-blue-600 font-medium mb-4 relative">
-          ALSO BUY
-          <div className="absolute -bottom-1 left-0 w-8 h-1 bg-blue-500"></div>
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {alsoBuyProducts.map((product, index) => (
-            <AlsoBuyCard
-              key={index}
-              category={product.category}
-              title={product.title}
-            />
-          ))}
-        </div>
-      </div>
+      {/* Keep the original PromoSlider */}
+      <PromoSlider />
+      
+      
     </div>
   );
 };
-
 export default HeroSection;
