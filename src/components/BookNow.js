@@ -24,7 +24,7 @@ const BookNow = () => {
     if (!data.name?.trim()) errors.push('Name is required');
     if (!data.email?.trim()) errors.push('Email is required');
     if (!data.phone?.trim()) errors.push('Phone is required');
-    if (!data.numberOfPeople || data.numberOfPeople < 1) errors.push('Number of people must be at least 1');
+    // if (!data.numberOfPeople || data.numberOfPeople < 1) errors.push('Number of people must be at least 1');
     if (!data.selectedPackage) errors.push('Package selection is required');
     // if (!data.travelDate) errors.push('Travel date is required');
     return errors;
