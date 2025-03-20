@@ -117,7 +117,7 @@ const PromoSlider = () => {
                     <h3 className="text-xl font-bold">{item.highlightText}</h3>
                   </div>
                   <button className="mt-4 bg-white text-gray-800 px-3 py-1 text-sm rounded-md hover:bg-gray-100 transition-colors duration-300">
-                    {item.buttonText}
+                    {/* {item.buttonText} */}
                   </button>
                 </div>
                 
