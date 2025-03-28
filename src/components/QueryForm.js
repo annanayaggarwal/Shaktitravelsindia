@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const API_BASE_URL = 'http://localhost:5000/api'; // Adjust to your backend URL
+
 const QueryForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    contact: '',
-    InsuranceDetails: ''
+    phone: '',
+    message: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -16,26 +18,22 @@ const QueryForm = () => {
   const validateForm = () => {
     const newErrors = {};
     
-    // Name validation
     if (formData.name.trim().length < 2) {
       newErrors.name = 'Name must be at least 2 characters';
     }
 
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       newErrors.email = 'Please enter a valid email address';
     }
 
-    // Contact validation
     const phoneRegex = /^\d{10}$/;
-    if (!phoneRegex.test(formData.contact)) {
-      newErrors.contact = 'Please enter a valid 10-digit phone number';
+    if (!phoneRegex.test(formData.phone)) {
+      newErrors.phone = 'Please enter a valid 10-digit phone number';
     }
 
-    // Tour details validation
-    if (formData.InsuranceDetails.trim().length < 10) {
-      newErrors.InsuranceDetails = 'Please provide more details about your tour';
+    if (formData.message.trim().length < 10) {
+      newErrors.message = 'Please provide more details about your insurance query';
     }
 
     setErrors(newErrors);
@@ -48,7 +46,6 @@ const QueryForm = () => {
       ...prev,
       [name]: value
     }));
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -67,10 +64,22 @@ const QueryForm = () => {
 
     setIsSubmitting(true);
     try {
-      await axios.post('https://insurance-backend-production-5d25.up.railway.app/api/queries', formData);
+      // Prepare data for backend
+      const bookingData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        numberOfPeople: 1 // Default value since this form doesn't collect it
+        // No selectedPackage since it's now optional
+      };
+
+      // Send request to backend
+      const response = await axios.post(`${API_BASE_URL}/bookings`, bookingData);
+
       setSubmitStatus('success');
-      setFormData({ name: '', email: '', contact: '', InsuranceDetails: '' });
-      setTimeout(() => setSubmitStatus(null), 5000); // Clear success message after 5 seconds
+      setFormData({ name: '', email: '', phone: '', message: '' });
+      setTimeout(() => setSubmitStatus(null), 5000);
     } catch (error) {
       console.error('Error submitting query:', error);
       setSubmitStatus('error');
@@ -134,32 +143,32 @@ const QueryForm = () => {
           <div>
             <input
               type="tel"
-              name="contact"
-              value={formData.contact}
+              name="phone"
+              value={formData.phone}
               onChange={handleChange}
               placeholder="Contact Number"
               className={`w-full p-3 rounded-lg border ${
-                errors.contact ? 'border-red-500' : 'border-gray-300'
+                errors.phone ? 'border-red-500' : 'border-gray-300'
               } focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-colors`}
             />
-            {errors.contact && (
-              <p className="mt-1 text-sm text-red-500">{errors.contact}</p>
+            {errors.phone && (
+              <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
             )}
           </div>
 
           <div>
             <input
               type="text"
-              name="InsuranceDetails"
-              value={formData.InsuranceDetails}
+              name="message"
+              value={formData.message}
               onChange={handleChange}
               placeholder="Insurance Details"
               className={`w-full p-3 rounded-lg border ${
-                errors.InsuranceDetails ? 'border-red-500' : 'border-gray-300'
+                errors.message ? 'border-red-500' : 'border-gray-300'
               } focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-colors`}
             />
-            {errors.InsuranceDetails && (
-              <p className="mt-1 text-sm text-red-500">{errors.InsuranceDetails}</p>
+            {errors.message && (
+              <p className="mt-1 text-sm text-red-500">{errors.message}</p>
             )}
           </div>
         </div>

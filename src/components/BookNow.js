@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Loader2 } from 'lucide-react';
 
-const API_BASE_URL = 'https://insurance-backend-production-5d25.up.railway.app/api';
+const API_BASE_URL = 'http://localhost:5000/api';
 
 const BookNow = () => {
   const [packages, setPackages] = useState({ Insurance: [], Renewal: [] });
@@ -78,7 +78,7 @@ const BookNow = () => {
         numberOfPeople: parseInt(formData.numberOfPeople)
       };
 
-      await axios.post(`https://insurance-backend-production-5d25.up.railway.app/api/bookings`, bookingData);
+      await axios.post(`http://localhost:5000/api/bookings`, bookingData);
       
       setSubmitStatus({
         type: 'success',
