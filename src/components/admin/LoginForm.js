@@ -10,7 +10,7 @@ const LoginForm = ({ onLogin }) => {
     e.preventDefault();
     setError(''); // Clear any previous errors
     try {
-      const response = await axios.post('https://tourandtravelsbacked-production.up.railway.app/api/auth/login', { username, password });
+      const response = await axios.post('https://insurance-backend-t18e.onrender.com/api/auth/login', { username, password });
       localStorage.setItem('token', response.data.token);
       onLogin();
     } catch (error) {

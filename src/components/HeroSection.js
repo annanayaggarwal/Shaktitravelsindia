@@ -154,7 +154,11 @@ const getIconForInsurance = (title) => {
   if (lowerTitle.includes('women')) return '👩';
   if (lowerTitle.includes('home')) return '🏠';
   if (lowerTitle.includes('travel')) return '✈️';
+  if (lowerTitle.includes('fire')) return '🔥';
+  if (lowerTitle.includes('loan')) return '💰';
+  if (lowerTitle.includes('personal accident')) return '📝';
   if (lowerTitle.includes('child')) return '👨‍👧';
+  if (lowerTitle.includes('finance')) return '🚙';
   // Default icon
   return '📝';
 };
@@ -204,7 +208,7 @@ const HeroSection = () => {
     const fetchInsuranceProducts = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("https://insurance-backend-production-5d25.up.railway.app/api/packages/header");
+        const response = await axios.get("https://insurance-backend-t18e.onrender.com/api/packages/header");
         
         // Map the API data to the format required for InsuranceCard
         const formattedProducts = response.data.Insurance?.map(pkg => ({

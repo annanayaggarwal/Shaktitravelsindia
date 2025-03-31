@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const API_BASE_URL = 'https://insurance-backend-production-5d25.up.railway.app/api'; // Adjust to your backend URL
+const API_BASE_URL = 'https://insurance-backend-t18e.onrender.com/api'; // Adjust to your backend URL
 
 const QueryForm = () => {
   const [formData, setFormData] = useState({

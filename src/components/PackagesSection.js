@@ -116,7 +116,7 @@ const PackagesSection = () => {
     const fetchPackages = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('https://insurance-backend-production-5d25.up.railway.app/api/packages/header', {
+        const response = await axios.get('https://insurance-backend-t18e.onrender.com/api/packages/header', {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'

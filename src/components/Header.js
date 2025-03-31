@@ -15,7 +15,7 @@ const Header = () => {
     const fetchPackages = async () => {
       try {
         const response = await axios.get(
-          "https://insurance-backend-production-5d25.up.railway.app/api/packages/header"
+          "https://insurance-backend-t18e.onrender.com/api/packages/header"
         );
         setPackages({
           Insurance: response.data.Insurance || [],
@@ -104,6 +104,18 @@ const Header = () => {
                       )}
                       {pkg.title.toLowerCase().includes('investment') && (
                         <span className="text-yellow-500">💰</span>
+                      )}.
+                      {pkg.title.toLowerCase().includes('personal loan') && (
+                        <span className="text-yellow-500">💰</span>
+                      )}.
+                      {pkg.title.toLowerCase().includes('fire') && (
+                        <span className="text-yellow-500">🔥</span>
+                      )}
+                      {pkg.title.toLowerCase().includes('personal accident') && (
+                        <span className="text-yellow-500">📝</span>
+                      )}
+                      {pkg.title.toLowerCase().includes('car finance') && (
+                        <span className="text-yellow-500">🚙</span>
                       )}
                       {pkg.title.toLowerCase().includes('home') && (
                         <span className="text-teal-500">🏠</span>
@@ -156,6 +168,15 @@ const Header = () => {
                       )}
                       {pkg.title.toLowerCase().includes('health') && (
                         <span className="text-red-500">❤️</span>
+                      )}
+                      {pkg.title.toLowerCase().includes('fire') && (
+                        <span className="text-red-500">🔥</span>
+                      )}
+                      {pkg.title.toLowerCase().includes('personal accident') && (
+                        <span className="text-red-500">📝</span>
+                      )}
+                      {pkg.title.toLowerCase().includes('travel') && (
+                        <span className="text-red-500">✈️</span>
                       )}
                       {pkg.title.toLowerCase().includes('motor') && (
                         <span className="text-blue-500">🚗</span>
@@ -361,8 +382,8 @@ const Header = () => {
 
           {/* Contact Info - Mobile */}
           <div className="bg-blue-600 text-white text-sm px-4 py-2 mt-4 rounded-lg mx-4">
-            <p>Email: insuranceriver.sales@gmail.com</p>
-            <p>Call: +91-8373990449</p>
+            <p>Email: helpdesk@insurancerivers.in</p>
+            <p>Call: +91-9205116444,+91-9220812584,+91-9220812384</p>
           </div>
         </div>
       )}

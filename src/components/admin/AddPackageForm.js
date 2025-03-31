@@ -115,7 +115,7 @@ const AddPackageForm = ({ onPackageAdded }) => {
       }
 
       const response = await axios.post(
-        'https://insurance-rivers.up.railway.app/api/packages',
+        'https://insurance-backend-t18e.onrender.com/api/packages',
         formDataToSend,
         {
           headers: {
